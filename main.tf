@@ -12,6 +12,11 @@ terraform {
     }
 }
 
+variable "imagebuild" {
+    type        = string
+    description = "Latest Image Build"
+}
+
 # resource groups
 resource "azurerm_resource_group" "main-rg" {
     name = "main-rg"
@@ -30,7 +35,7 @@ resource "azurerm_container_group" "container-group" {
 
     container {
         name            = "weatherapi"
-        image           = "benjaminadlard/weatherapi"
+        image           = "benjaminadlard/weatherapi:${var.imagebuild}"
             cpu         = "1"
             memory      = "1"
 
