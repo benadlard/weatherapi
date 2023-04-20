@@ -21,8 +21,8 @@ resource "azurerm_resource_group" "main-rg" {
 # container resource
 resource "azurerm_container_group" "container-group" {
     name                  = "weatherapi"
-    location              = azurerm_resource_group.resource_group.location
-    resource_group_name   = azurerm_resource_group.resource_group.name
+    location              = azurerm_resource_group.main-rg.location
+    resource_group_name   = azurerm_resource_group.main-rg.name
 
     ip_address_type     = "public"
     dns_name_label      = "benjaminadlardweatherapi"
