@@ -3,6 +3,15 @@ provider "azurerm" {
     features {}
 }
 
+terraform {
+    backend "azurerm" {
+        resource_group_name  = "tf_rg_storage"
+        storage_account_name = "benadlardtfstorage"
+        container_name       = "tfstate"
+        key                  = "terraform.tfstate"
+    }
+}
+
 resource "azurerm_resource_group" "resource_group" {
     name = "tfmainrg"
     location = "UK South"
