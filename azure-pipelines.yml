@@ -32,19 +32,20 @@ stages:
 - stage: Provision
   displayName: 'Terraforming on Azure...'
   dependsOn: Build
+  
   jobs:
   - job: Provision
     displayName: 'Provisioning Container Instance'
     pool:
       vmImage: ubuntu-latest
     variables: 
-      -group: terraform-env-vars
-      steps:
-      - script: |
-          set -e
+    - group: terraform-env-vars
+    steps:
+    - script: |
+        set -e
 
-          terraform init -input=false
-          terraform apply -input=false -auto-approve
+        terraform init -input=false
+        terraform apply -input=false -auto-approve
       name: 'RunTerraform'
       displayName: 'Run Terraform'
       env: 
